@@ -15,21 +15,21 @@ pipeline {
     stage('Build dependencies') {
       steps {
         dir(path: 'serverless') {
-          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+          sh 'npm run build'
         }
       }
     }
     stage('CDK bootstrap') {
       steps {
         dir(path: 'serverless') {
-          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+          sh 'cdk bootstrap'
         }
       }
     }
     stage('CDK synth') {
       steps {
         dir(path: 'serverless') {
-          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+          sh 'cdk synth'
         }
       }
     }
