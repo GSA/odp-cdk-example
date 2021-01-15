@@ -1,22 +1,37 @@
 pipeline {
-  agent none
-  stages {
-    stage('Run Build') {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
-        }
-
+  agent {
+      dockerfile {
+        filename 'Dockerfile'
       }
+  }
+  stages {
+    stage('Install dependencies') {
       steps {
         dir(path: 'serverless') {
-          sh '''npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3
-npm run build
-cdk bootstrap'''
+          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
         }
-
       }
     }
-
+    stage('Build dependencies') {
+      steps {
+        dir(path: 'serverless') {
+          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+        }
+      }
+    }
+    stage('CDK bootstrap') {
+      steps {
+        dir(path: 'serverless') {
+          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+        }
+      }
+    }
+    stage('CDK synth') {
+      steps {
+        dir(path: 'serverless') {
+          sh 'npm install @aws-cdk/aws-apigateway @aws-cdk/aws-lambda @aws-cdk/aws-s3'
+        }
+      }
+    }
   }
 }
