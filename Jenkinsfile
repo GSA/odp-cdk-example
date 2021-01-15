@@ -53,7 +53,9 @@ pipeline {
 
     stage('IaC Scan') {
       steps {
-        dir(path: 'serverless/cdk.out') {
+        sh '''mkdir ./iac-scan
+cp ./serverless/*.template.json ./iac-scan/*.template.json'''
+        dir(path: 'iac-scan') {
           prismaIaC(high: '100', low: '100', medium: '100', operator: 'AND', assetname: 'cdk-test', tags: 'env:sandbox', templatetype: 'CFT', hostName: 'test', templateversion: '1')
         }
 
