@@ -43,13 +43,13 @@ pipeline {
     }
 
     stage('CDK deploy') {
-          steps {
-            dir(path: 'serverless') {
-              sh 'cdk deploy --require-approval=never'
-            }
-
-          }
+      steps {
+        dir(path: 'serverless') {
+          sh 'cdk deploy --require-approval=never'
         }
+
+      }
+    }
 
   }
 }
