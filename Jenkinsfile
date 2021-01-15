@@ -51,5 +51,14 @@ pipeline {
       }
     }
 
+    stage('IaC Scan') {
+      steps {
+        dir(path: 'serverless/cdk.out') {
+          prismaIaC(high: '100', low: '100', medium: '100', operator: 'AND', assetname: 'cdk-test', tags: 'env:sandbox', templatetype: 'CFT', hostName: 'test', templateversion: '1')
+        }
+
+      }
+    }
+
   }
 }
