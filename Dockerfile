@@ -6,7 +6,3 @@ COPY . $SOURCE_DIR
 WORKDIR $SOURCE_DIR
 
 RUN npm i -g aws-cdk typescript
-
-RUN which cdk
-
-RUN which tsc
