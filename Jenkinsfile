@@ -18,10 +18,4 @@ cdk bootstrap'''
     }
 
   }
-  post {
-    always {
-      cleanWs()
-    }
-
-  }
 }
