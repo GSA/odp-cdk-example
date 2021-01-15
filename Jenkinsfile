@@ -14,7 +14,11 @@ pipeline {
 
     stage('CDK Bootstrap') {
       steps {
-        sh 'cdk bootstrap'
+        dir(path: 'serverless') {
+          sh '''ls -la
+cdk bootstrap'''
+        }
+
       }
     }
 
