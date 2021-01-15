@@ -3,12 +3,18 @@ pipeline {
     dockerfile true
   }
   stages {
-    stage('Bootstrap CDK') {
+    stage('Run Build') {
       steps {
         dir(path: 'serverless') {
-          sh 'cdk bootstrap'
+          sh 'npm run build'
         }
 
+      }
+    }
+
+    stage('CDK Bootstrap') {
+      steps {
+        sh 'cdk bootstrap'
       }
     }
 
