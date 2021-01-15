@@ -4,12 +4,7 @@ pipeline {
   }
   stages {
     stage('Bootstrap CDK') {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
-        }
-
-      }
+      agent any
       steps {
         dir(path: 'serverless') {
           sh 'cdk bootstrap'
