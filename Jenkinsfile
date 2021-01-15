@@ -1,21 +1,16 @@
 pipeline {
-  agent {
-    dockerfile true
-  }
+  agent none
   stages {
     stage('Run Build') {
-      steps {
-        dir(path: 'serverless') {
-          sh 'npm run build'
+      agent {
+        dockerfile {
+          filename 'Dockerfile'
         }
 
       }
-    }
-
-    stage('CDK Bootstrap') {
       steps {
         dir(path: 'serverless') {
-          sh '''ls -la
+          sh '''npm run build
 cdk bootstrap'''
         }
 
