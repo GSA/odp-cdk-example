@@ -47,7 +47,7 @@ pipeline {
         sh '''mkdir iac-scan
 find ./serverless/cdk.out/ -name \'*.template.json\' -exec cp -prv \'{}\' \'./iac-scan\' \';\''''
         dir(path: 'iac-scan') {
-          prismaIaC(high: '100', low: '100', medium: '100', operator: 'AND', assetname: 'cdk-test', tags: 'env:sandbox', templatetype: 'CFT', hostName: 'test', templateversion: '1')
+          prismaIaC(high: '0', low: '0', medium: '0', operator: 'OR', assetname: 'cdk-test', tags: 'env:sandbox', templatetype: 'CFT', hostName: 'test', templateversion: '0')
         }
 
       }
